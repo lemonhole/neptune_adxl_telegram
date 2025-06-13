@@ -2,7 +2,7 @@
 
 **Описание**:
 
-Данный гайд — копия [гайда от Tombraider2006](https://github.com/Tombraider2006/klipperFB6/blob/main/macros/telegram_adxl.md), переписанная под Neptune 3 Pro на клиппере с хостом в виде BTT Pi.<br>
+Данный гайд — копия [гайда от Tombraider2006](https://github.com/Tombraider2006/klipperFB6/blob/main/macros/telegram_adxl.md), переписанная под Neptune 3 Pro на клиппере.<br>
 Если есть вопросы, пишите их в [чат по нептунам](https://t.me/ELEGOO_Neptune_3_and_4_series), тэгая меня — @tootiredtoday
 
 **Гайд**:
@@ -106,7 +106,7 @@ a) Параметры 117.5 в следующих строках — это це
 	`{% set POSITION_X = params.POSITION_X|default(117.5)|int %}`<br>
 	`{% set POSITION_Y = params.POSITION_Y|default(117.5)|int %}`<br>
  
-b) Если бот установлен не в `home/ваше_имя_хоста/moonraker-telegram-bot/bot` (из kiauh по умолчанию он ставится туда — скорее всего, и у вас он там), то замените `../../` в макросах выше на `home/ваше_имя_хоста/`
+b) Если бот установлен не в `home/ваше_имя_хоста/moonraker-telegram-bot/bot` (из kiauh по умолчанию он ставится туда — скорее всего, и у вас он там), то замените `../../` на `home/ваше_имя_хоста/` в строках `RESPOND PREFIX=tg_send_image MSG="path=['../../`
  
 Работает это следующим образом:
 
