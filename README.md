@@ -82,7 +82,7 @@ gcode:
 	{% endif %}
 	TEST_RESONANCES AXIS=X HZ_PER_SEC={ HZ_PER_SEC } POINT={ POSITION_X },{ POSITION_Y },{POSITION_Z}
 	RUN_SHELL_COMMAND CMD=shaper_calibrate
-	RESPOND PREFIX=tg_send_image MSG="path=['/home/biqu/printer_data/config/adxl_results/resonances_x.png'], message='Результат проверки шейперов по X' "
+	RESPOND PREFIX=tg_send_image MSG="path=['../../printer_data/config/adxl_results/resonances_x.png'], message='Результат проверки шейперов по X' "
 
 [gcode_macro ADXL_Y_TG]
 description: график шейперов в телеграм
@@ -97,7 +97,7 @@ gcode:
 	{% endif %}
 	TEST_RESONANCES AXIS=Y HZ_PER_SEC={ HZ_PER_SEC } POINT={ POSITION_X },{ POSITION_Y },{POSITION_Z}
 	RUN_SHELL_COMMAND CMD=shaper_calibrate
-	RESPOND PREFIX=tg_send_image MSG="path=['/home/biqu/printer_data/config/adxl_results/resonances_y.png'], message='Результат проверки шейперов по Y' "
+	RESPOND PREFIX=tg_send_image MSG="path=['../../printer_data/config/adxl_results/resonances_y.png'], message='Результат проверки шейперов по Y' "
 
 [gcode_shell_command shaper_calibrate]
 command: bash /home/biqu/printer_data/config/shaper_calibrate.sh
@@ -111,14 +111,10 @@ a) Параметры 117.5 в этих строках — это центр с�
 
 b) Если имя пользователя не `biqu` меняем на своё в строках:<br>
 ```
-RESPOND PREFIX=tg_send_image MSG="path=['/home/biqu/printer_data/config/adxl_results/resonances_x.png'], message='Результат проверки шейперов по X' "
-```
-```
-RESPOND PREFIX=tg_send_image MSG="path=['/home/biqu/printer_data/config/adxl_results/resonances_y.png'], message='Результат проверки шейперов по Y' "
-```
-```
 command: bash /home/biqu/printer_data/config/shaper_calibrate.sh
 ```
+c) Бот должен быть установлен в home/имя_хоста/moonraker-telegram-bot/bot (из kiauh по умолчанию он ставится туда — скорее всего, и у вас он там).<br>
+Если ваш бот стоит не там, то замените `../../` в макросах выше на `home/ваше_имя_хоста/`
  
 Работает это следующим образом:
 
