@@ -97,7 +97,7 @@ gcode:
 	RESPOND PREFIX=tg_send_image MSG="path=['../../printer_data/config/adxl_results/resonances_y.png'], message='Результат проверки шейперов по Y' "
 
 [gcode_shell_command shaper_calibrate]
-command: bash /home/biqu/printer_data/config/shaper_calibrate.sh
+command: bash ../printer_data/config/shaper_calibrate.sh
 timeout: 600.
 verbose: True
 ```
@@ -105,12 +105,8 @@ verbose: True
 a) Параметры 117.5 в следующих строках — это центр стола по X и Y соотвественно (меняйте сразу при необходимости в обоих макросах):<br>
 	`{% set POSITION_X = params.POSITION_X|default(117.5)|int %}`<br>
 	`{% set POSITION_Y = params.POSITION_Y|default(117.5)|int %}`<br>
-
-b) Если имя пользователя у вас не `biqu`, то меняем на своё в строке:<br>
-```
-command: bash /home/biqu/printer_data/config/shaper_calibrate.sh
-```
-c) Если бот установлен не в `home/ваше_имя_хоста/moonraker-telegram-bot/bot` (из kiauh по умолчанию он ставится туда — скорее всего, и у вас он там), то замените `../../` в макросах выше на `home/ваше_имя_хоста/`
+ 
+b) Если бот установлен не в `home/ваше_имя_хоста/moonraker-telegram-bot/bot` (из kiauh по умолчанию он ставится туда — скорее всего, и у вас он там), то замените `../../` в макросах выше на `home/ваше_имя_хоста/`
  
 Работает это следующим образом:
 
