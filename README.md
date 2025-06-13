@@ -69,11 +69,13 @@ gcode:
 	{% set POSITION_X = params.POSITION_X|default(117.5)|int %}
 	{% set POSITION_Y = params.POSITION_Y|default(117.5)|int %}
 	{% set POSITION_Z = params.POSITION_Z|default(30)|int %}
+    	{% set min_freq = params.FREQ_START|default(5)|float %}
+    	{% set max_freq = params.FREQ_END|default(133.33)|float %}
 
 	{% if printer.toolhead.homed_axes != 'xyz' %} #home if not homed
 		G28
 	{% endif %}
-	TEST_RESONANCES AXIS=X HZ_PER_SEC={ HZ_PER_SEC } POINT={ POSITION_X },{ POSITION_Y },{POSITION_Z}
+	TEST_RESONANCES AXIS=X HZ_PER_SEC={ HZ_PER_SEC } POINT={ POSITION_X },{ POSITION_Y },{POSITION_Z} FREQ_START={min_freq} FREQ_END={max_freq}
 	RUN_SHELL_COMMAND CMD=shaper_calibrate
 	RESPOND PREFIX=tg_send_image MSG="path=['../../printer_data/config/adxl_results/resonances_x.png'], message='Результат проверки шейперов по X' "
 
