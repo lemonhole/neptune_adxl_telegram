@@ -3,10 +3,10 @@
 **Описание**:
 
 Данный гайд — копия гайда от Tombraider2006, переписанная под Neptune 3 Pro на клиппере с хостом в виде BTT Pi.<br>
-Ссылка на оригинальный гайд: https://github.com/Tombraider2006/klipperFB6/blob/main/macros/telegram_adxl.md<br>
+[Ссылка на оригинальный гайд](https://github.com/Tombraider2006/klipperFB6/blob/main/macros/telegram_adxl.md).<br>
 Если имя пользователя у вас не "biqu" (по умолчанию на BTT Pi 1.2), то заменяйте на своё (по гайду есть напоминания об этом).
 
-Если есть вопросы, пишите их в чат по нептунам: https://t.me/ELEGOO_Neptune_3_and_4_series, тэгая меня — @tootiredtoday
+Если есть вопросы, пишите их в [чат по нептунам](https://t.me/ELEGOO_Neptune_3_and_4_series), тэгая меня — @tootiredtoday
 
 **Гайд**:
 
@@ -19,8 +19,7 @@
 ```
 Если будет спрашивать "Do you want to update now?", вводите "n" (No)<br>
 Если будет спрашивать "Would you like to try out KIAUH v6?", вводите "2" (No)<br>
-Выбираем 4 пункт "Advanced", там ищем "[G-Code Shell Command]" — устанавливаем, выходим.<br>
-Соединение по SSH не закрываем — еще понадобится.
+Выбираем 4 пункт "Advanced", там ищем "[G-Code Shell Command]" — устанавливаем, выходим из kiauh, соединение по SSH не закрываем — дальше еще понадобится.
 
 2. В папке с конфигами (где лежит printer.cfg) создаем папку adxl_results.<br>
 Там же (в папке с конфигами) создаем файл `shaper_calibrate.sh`<br>
