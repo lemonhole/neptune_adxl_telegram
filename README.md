@@ -2,10 +2,7 @@
 
 **Описание**:
 
-Данный гайд — копия гайда от Tombraider2006, переписанная под Neptune 3 Pro на клиппере с хостом в виде BTT Pi.<br>
-[Ссылка на оригинальный гайд](https://github.com/Tombraider2006/klipperFB6/blob/main/macros/telegram_adxl.md).<br>
-Если имя пользователя у вас не "biqu" (по умолчанию на BTT Pi 1.2), то заменяйте на своё (по гайду есть напоминания об этом).
-
+Данный гайд — копия [гайда от Tombraider2006](https://github.com/Tombraider2006/klipperFB6/blob/main/macros/telegram_adxl.md), переписанная под Neptune 3 Pro на клиппере с хостом в виде BTT Pi.<br>
 Если есть вопросы, пишите их в [чат по нептунам](https://t.me/ELEGOO_Neptune_3_and_4_series), тэгая меня — @tootiredtoday
 
 **Гайд**:
