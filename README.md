@@ -111,10 +111,10 @@ a) Параметры 117.5 в этих строках — это центр с�
 
 b) Если имя пользователя не `biqu` меняем на своё в строках:<br>
 ```
-RESPOND PREFIX=tg_send_image MSG="path=['/home/biqu/printer_data/config/adxl_results/inputshaper/resonances_x.png'], message='Результат проверки шейперов по X' "
+RESPOND PREFIX=tg_send_image MSG="path=['/home/biqu/printer_data/config/adxl_results/resonances_x.png'], message='Результат проверки шейперов по X' "
 ```
 ```
-RESPOND PREFIX=tg_send_image MSG="path=['/home/biqu/printer_data/config/adxl_results/inputshaper/resonances_y.png'], message='Результат проверки шейперов по Y' "
+RESPOND PREFIX=tg_send_image MSG="path=['/home/biqu/printer_data/config/adxl_results/resonances_y.png'], message='Результат проверки шейперов по Y' "
 ```
 ```
 command: bash /home/biqu/printer_data/config/shaper_calibrate.sh
