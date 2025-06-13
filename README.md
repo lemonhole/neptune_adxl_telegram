@@ -19,8 +19,8 @@
 Выбираем 4 пункт "Advanced", там ищем "[G-Code Shell Command]" — устанавливаем, выходим из kiauh, соединение по SSH не закрываем — дальше еще понадобится.
 
 2. В папке с конфигами (где лежит printer.cfg) создаем папку adxl_results.<br>
-Там же (в папке с конфигами) создаем файл `shaper_calibrate.sh`<br>
-В него копируем следующий код:
+Туда же (в папку с конфигами) кидаем этот файл [shaper_calibrate.sh](https://github.com/lemonhole/neptune_adxl_telegram/blob/main/shaper_calibrate.sh) <br>
+Либо создаем его там сами, копируя в него следующий код:
 
 ```
 #! /bin/bash
@@ -49,8 +49,6 @@ else
     echo "Something went wrong, no csv found to process"
 fi
 ```
-Примечание:<br>
-Файл можно скачать [отсюда](https://github.com/lemonhole/neptune_adxl_telegram/blob/main/shaper_calibrate.sh) и так же закинуть в папку с конфигами
 
 3. Через консоль делаем файл исполняемым:
 
@@ -59,7 +57,7 @@ cd ~/printer_data/config/
 chmod +x ./shaper_calibrate.sh
 ```
 
-4. В `printer.cfg` добавим следущий блок:
+4. В `printer.cfg` добавим следущий блок с макросами:
 
 ```
 [respond]
@@ -100,16 +98,15 @@ timeout: 600.
 verbose: True
 ```
 Примечание:<br> 
-a) Параметры 117.5 в этих строках — это центр стола по X и Y соотвественно (меняйте сразу при необходимости в обоих макросах):<br>
+a) Параметры 117.5 в строках ниже — это центр стола по X и Y соотвественно (меняйте сразу при необходимости в обоих макросах):<br>
 	`{% set POSITION_X = params.POSITION_X|default(117.5)|int %}`<br>
 	`{% set POSITION_Y = params.POSITION_Y|default(117.5)|int %}`<br>
 
-b) Если имя пользователя не `biqu` меняем на своё в строках:<br>
+b) Если имя пользователя у вас не `biqu` меняем на своё в строке:<br>
 ```
 command: bash /home/biqu/printer_data/config/shaper_calibrate.sh
 ```
-c) Бот должен быть установлен в `home/ваше_имя_хоста/moonraker-telegram-bot/bot` (из kiauh по умолчанию он ставится туда — скорее всего, и у вас он там).<br>
-Если ваш бот стоит не там, то замените `../../` в макросах выше на `home/ваше_имя_хоста/`
+c) Если бот установлен не в `home/ваше_имя_хоста/moonraker-telegram-bot/bot` (из kiauh по умолчанию он ставится туда — скорее всего, и у вас он там), то замените `../../` в макросах выше на `home/ваше_имя_хоста/`
  
 Работает это следующим образом:
 
