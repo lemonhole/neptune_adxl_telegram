@@ -29,7 +29,7 @@
 ```
 #! /bin/bash
 OUTPUT_FOLDER=config/adxl_results
-PRINTER_DATA=home/biqu/printer_data
+PRINTER_DATA=$HOME/printer_data
 KLIPPER_SCRIPTS_LOCATION=~/klipper/scripts
 RESONANCE_CSV_LOCATION=tmp
 if [ ! -d  /$PRINTER_DATA/$OUTPUT_FOLDER/ ] #Check if we have an output folder
@@ -54,8 +54,7 @@ else
 fi
 ```
 Примечание:<br>
-a) Файл также можно создать на ПК блокнотом, скопировав содержимое выше, и закинуть в папку с конфигами — важно только сменить расширение с .txt на .sh<br>
-b) Строка "PRINTER_DATA=home/biqu/printer_data" — если имя пользователя не `biqu`, меняем на своё.
+Файл также можно создать на ПК блокнотом, скопировав содержимое выше, и закинуть в папку с конфигами — важно только сменить расширение с .txt на .sh<br>
 
 3. Через консоль делаем файл исполняемым:
 
