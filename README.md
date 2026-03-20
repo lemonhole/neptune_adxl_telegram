@@ -38,7 +38,7 @@ set -- resonances*.csv
 if [ "$#" -gt 0 ]; then
     for each_file in resonances*.csv; do
         STATIC_NAME="${each_file:0:12}.png"
-        HISTORY_NAME="$(echo "${each_file%.csv}" | cut -d'_' -f1,2,6,7).png"
+        HISTORY_NAME="$(echo "${each_file%.csv}" | cut -d'_' -f1,2,6,7 | sed 's/..$//').png"
 
         "$KLIPPER_SCRIPTS_LOCATION/calibrate_shaper.py" "$each_file" -o "$BOT_FOLDER/$STATIC_NAME"
         cp "$BOT_FOLDER/$STATIC_NAME" "$OUTPUT_FOLDER/$HISTORY_NAME"
