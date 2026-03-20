@@ -23,12 +23,13 @@
 
 ```
 #!/bin/bash
-OUTPUT_FOLDER="config/adxl_results"
 PRINTER_DATA="$HOME/printer_data"
+OUTPUT_FOLDER="$PRINTER_DATA/config/adxl_results"
+BOT_FOLDER="$OUTPUT_FOLDER/bot"
 KLIPPER_SCRIPTS_LOCATION="$HOME/klipper/scripts"
 RESONANCE_CSV_LOCATION="/tmp"
 
-mkdir -p "$PRINTER_DATA/$OUTPUT_FOLDER"
+mkdir -p "$BOT_FOLDER"
 cd "$RESONANCE_CSV_LOCATION" || exit
 
 shopt -s nullglob
@@ -36,15 +37,15 @@ set -- resonances*.csv
 
 if [ "$#" -gt 0 ]; then
     for each_file in resonances*.csv; do
-        HISTORY_NAME="$(echo "${each_file%.csv}" | cut -d'_' -f1,2,6,7).png"
         STATIC_NAME="${each_file:0:12}.png"
+        HISTORY_NAME="$(echo "${each_file%.csv}" | cut -d'_' -f1,2,6,7).png"
 
-        "$KLIPPER_SCRIPTS_LOCATION/calibrate_shaper.py" "$each_file" -o "$PRINTER_DATA/$OUTPUT_FOLDER/$STATIC_NAME"
-        cp "$PRINTER_DATA/$OUTPUT_FOLDER/$STATIC_NAME" "$PRINTER_DATA/$OUTPUT_FOLDER/$HISTORY_NAME"
+        "$KLIPPER_SCRIPTS_LOCATION/calibrate_shaper.py" "$each_file" -o "$BOT_FOLDER/$STATIC_NAME"
+        cp "$BOT_FOLDER/$STATIC_NAME" "$OUTPUT_FOLDER/$HISTORY_NAME"
         rm "$each_file"
     done
 else
-    echo "No CSV files found in $RESONANCE_CSV_LOCATION"
+    echo "No CSV files found to process"
 fi
 ```
 
@@ -55,7 +56,7 @@ cd ~/printer_data/config/
 chmod +x ./shaper_calibrate.sh
 ```
 
-4. В `printer.cfg` добавим следущий блок с макросами:
+4. В `printer.cfg` добавим следующий блок с макросами:
 
 ```
 [respond]
@@ -75,7 +76,7 @@ gcode:
 	{% endif %}
 	TEST_RESONANCES AXIS=X HZ_PER_SEC={ HZ_PER_SEC } POINT={ POSITION_X },{ POSITION_Y },{POSITION_Z} FREQ_START={min_freq} FREQ_END={max_freq}
 	RUN_SHELL_COMMAND CMD=shaper_calibrate
-	RESPOND PREFIX=tg_send_image MSG="path=['../../printer_data/config/adxl_results/resonances_x.png'], message='Результат проверки шейперов по X' "
+	RESPOND PREFIX=tg_send_image MSG="path=['../../printer_data/config/adxl_results/bot/resonances_x.png'], message='Результат проверки шейперов по X' "
 
 [gcode_macro ADXL_Y_TG]
 description: график шейперов в телеграм
@@ -92,7 +93,7 @@ gcode:
 	{% endif %}
 	TEST_RESONANCES AXIS=Y HZ_PER_SEC={ HZ_PER_SEC } POINT={ POSITION_X },{ POSITION_Y },{POSITION_Z} FREQ_START={min_freq} FREQ_END={max_freq}
 	RUN_SHELL_COMMAND CMD=shaper_calibrate
-	RESPOND PREFIX=tg_send_image MSG="path=['../../printer_data/config/adxl_results/resonances_y.png'], message='Результат проверки шейперов по Y' "
+	RESPOND PREFIX=tg_send_image MSG="path=['../../printer_data/config/adxl_results/bot/resonances_y.png'], message='Результат проверки шейперов по Y' "
 
 [gcode_shell_command shaper_calibrate]
 command: bash ../printer_data/config/shaper_calibrate.sh
